@@ -236,11 +236,10 @@ To add the agent on Ubuntu Server we follow the same steps taken to add it on Wi
 
 Then create new policy, by clicking the "**Create new agent policy**" button
 
-Create new policy for Linux (Ubuntu)
 <img width="944" alt="image" src="https://github.com/user-attachments/assets/61265e17-7255-4d05-8dca-f3127bca66f7">
 
+You will be prompted with a screen to fill the name of the new policy, just give a name for that and click "**Create policy**" button, as shown below
 
-Create policy
 <img width="943" alt="image" src="https://github.com/user-attachments/assets/be3130be-30d8-4c90-85cb-6014309810fc">
 
 
