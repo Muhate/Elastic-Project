@@ -230,17 +230,11 @@ To setup sysmon on Windows, we need first to download, extract and install the s
 
 - **5.8: Setting up Fleet Agent on Ubuntu Server 24.04**
 
-Another screen will be opened, fill the policy name, in this case we create the windows policy. This is a good practice, as for each OS we are going to have a diferrent policy.
-
-Add agent on ubuntu
+To add the agent on Ubuntu Server we follow the same steps taken to add it on Windows Server, but we will create another policy for Linux servers. So click the "**Add agent**" button, as shown in the image below.
 
 <img width="946" alt="image" src="https://github.com/user-attachments/assets/1a8592eb-5e52-4819-81e3-9ff235c3be6c">
 
-
-
-<p align="center">
-<img width="944" alt="Windows Policy creation" src="https://github.com/user-attachments/assets/f509c73b-6090-4f95-b812-8a657e58d775">
-</p>
+Then create new policy, by clicking the "**Create new agent policy**" button
 
 Create new policy for Linux (Ubuntu)
 <img width="944" alt="image" src="https://github.com/user-attachments/assets/61265e17-7255-4d05-8dca-f3127bca66f7">
