@@ -269,6 +269,12 @@ We search for the term "**Windows**" and we can choose between "**Custom Windows
 <img width="944" alt="Custom Windows Event Logs integration" src="https://github.com/user-attachments/assets/57ebd370-582e-41b1-aaad-258079dbfec2">
 </p>
 
+After choosing the integration to add, we click on that and then click on the "**Add Custom Windows Events Logs**" button, as shown in the image below:
+
+<p align="center">
+<img width="944" alt="Add Custom Windows Events Logs" src="https://github.com/user-attachments/assets/a7ad479b-3c22-48c5-a0d8-41997da8f312">
+</p>
+
 
 
 
