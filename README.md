@@ -222,7 +222,11 @@ As we are installing the agent in a Windows OS, we choose Windows ""**Install El
 
 - **5.8: Setting up Sysmon on Windows Server 2022**
 
-  https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml - Sysmon download
+To setup sysmon on Windows, we need first to download, extract and install the sysmon with its configuration file. To download sysmon, go <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon">here</a>, download the executable for windows and extract it, then go <a href="https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml">here</a> to download the Olaf configuration file. Make sure to save inside the folder created when extracting sysmony. Open PowerShell and navigate to the sysmon extracted folder and run the following command:
+
+       ```bash
+       .\Sysmon64.exe -i sysmonconfig.xml --accepteula
+       ```
 
 Another screen will be opened, fill the policy name, in this case we create the windows policy. This is a good practice, as for each OS we are going to have a diferrent policy.
 
