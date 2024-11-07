@@ -200,13 +200,13 @@ If everything runs well, the button ""**Continue enrolling Elastic Agent**"" wil
 <img width="944" alt="Continue enrolling Elastic Agent" src="https://github.com/user-attachments/assets/a3a2cc80-bb6e-48d2-a54a-88b079e8bf18">
 </p>
 
-Continuing, click the ""**close**"" button and add agent following the image below:
+- **5.7: Setting up Fleet Agent on Windows Server 2022**
+
+After everything has run well, it's time to add some agents. We are going to start by adding on Windows machine, so follow the steps showed in the image below:
 
 <p align="center">
 <img width="944" alt="Add Agent" src="https://github.com/user-attachments/assets/0f880b3e-d075-4a64-9c1f-6401e55aa467">
 </p>
-
-- **5.7: Setting up Fleet Agent on Windows Server 2022**
 
 Another screen will be opened, fill the policy name, in this case we create the windows policy. This is a good practice, as for each OS we are going to have a diferrent policy.
 
@@ -266,38 +266,6 @@ As we are installing the agent in a Windows OS, we choose Windows ""**Install El
 
 
 
-
-
-
-
-   - **5.6: Add the following code inside the file */var/ossec/etc/ossec.conf* on Wazuh agent**
-
-       ```bash
-       <ossec_config>
-         <localfile>
-           <log_format>json</log_format>
-           <location>/var/log/suricata/eve.json</location>
-         </localfile>
-       </ossec_config>
-       ```
-
-- Restart Wazuh agent
-
-       ```bash
-       sudo systemctl restart wazuh-agent
-       ```
-
-To check whether our configuration are working or no, we open one machine with NMAP installed and run the command below, then we check if that scan will be triggered.
-     
-       ```bash
-       nmap -A 192.168.10.4
-       ```
-
-As can be seen on the image below, the scan was triggered
-
-<p align="center">
-<img width="812" alt="Scan triggered" src="https://github.com/user-attachments/assets/b045789e-441b-4f99-906f-b757d2f6c5a4">
-</p>
 
 
 ### 6. **Conclusion**
