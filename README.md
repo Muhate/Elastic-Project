@@ -1,16 +1,16 @@
-# Elastic-Project
-
-# Detecting Network Intrusion with Suricata and Wazuh
+# Elastic Stack Project
 
 ### 1. Description
 
-This home lab project focuses on implementing Network Intrusion Detection using Suricata and Wazuh. Suricata is an open-source and high performance Intrusion Detection System (IDS) and Intrusion Prevention System (IPS) with capable of network analysis and threat detection software, and Wazuh is an open-source security monitoring solution. suricata will be installed on an Ubuntu 24.04 server to monitor its traffic. It is crucial to monitor the network to detect some anomalies on the traffic, as it can be an indication of an attack. We will use one kali machine to emulate some attacks/scans with nmap and check if Suricata will be able to detect them with the Suricata network traffic inspection capabilities.
+This home lab project focuses on implementing a SIEM (Security Information and Event Management) using Elastic Stack (Elasticsearch, Logstash and Kibana). We will be installing the Elastic Stack on Ubuntu 24.04 server and we'll be monitoring, detecting and investigating brute force attacks using SSH and RDP protocols. We will create some dashboards and integrate the SIEM with osTicket system, which is ticketing system. 
+We will use elastic agents enrolled via fleet server on an Ubuntu machine and elastic agents along with Sysmon on an Windows machine. We will learn how to setup and configure the Fleet Server, elastic agents and Sysmon. We are going to also install and configure Mythic server to emulate a C2 server, which will be used to attack some of the servers.
 
 
 ### 2. Objectives
 
-- Set up a Wazuh server to collect and analyze security data.
-- Set up and configure Suricata to capture network activity and Wazuh agent to send logs to Wazuh manager.
+- Set up a Elastic Stack SIEM to collect, aggregate, correlate and analyze security data.
+- Set up and configure Fleet Server to centrally manage the elastic agents.
+- Install and configure the osTicket and integrate it to Elastic Stack to create tickets when an alert is triggered.
 
 
 ### 3. Tools and Technologies Used
@@ -27,13 +27,14 @@ This home lab project focuses on implementing Network Intrusion Detection using 
 The diagram below illustrates how the components will be interconnected all together, along with their description and IP addresses details.
 
 <p align="center">
-<img width="300" alt="Network Diagram" src="https://github.com/user-attachments/assets/51d355b5-144f-4478-b466-f8704964ecec">
+<img width="485" alt="Network Diagram" src="https://github.com/user-attachments/assets/cd0feaa9-b8a5-4853-83ce-df84b73e73f8">
 </p>
 
 
    - **Components**:
-     - **Wazuh Manager**: Centralized management console.
-     - **Suricata and Wazuh agent**: Installed on target systems to capture network activity and collect logs, respectively.
+     - **Elastic Stack**: Centralized management console.
+     - **Fleet Server**: Installed on target systems to capture network activity and collect logs, respectively.
+     - **Elastic agents**: Installed on target systems to capture network activity and collect logs, respectively.
 
 ### 5. Installation Steps
    - **5.1. Setting up VirtualBox**
@@ -54,18 +55,121 @@ For setting up Ubuntu Server on VirtualBox, refer to <a href="https://github.com
 <br>
 <br>
 
-   - **5.4: Setting up Wazuh Manager on Ubuntu Server 24.04 LTS**
+   - **5.4: Setting up Elastic Stack on Ubuntu Server 24.04 LTS**
 
      - After logging into the server, update the package manager:
        ```bash
        sudo apt update && sudo apt upgrade -y && sudo reboot
        ```
-     - Install Wazuh Manager and all other components:
+     - Install Elastic Stack and all other components, going <a href="https://www.elastic.co/downloads/elasticsearch">here</a> and choosing the "**deb x86_64**" platform and wright click on that and choose the option "**copy link address**" and run the following command:
        ```bash
-       curl -sO https://packages.wazuh.com/4.9/wazuh-install.sh && sudo bash ./wazuh-install.sh -a
+       wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.15.3-amd64.deb
+
+       dpkg -i elasticsearch-8.15.3-amd64.deb
        ```
 
-   - **5.5: Setting up Suricata on Ubuntu Server 24.04 LTS**
+After the installation has ended up, make sure to copy the output that will be printed, there are some important information, including the password of the admin user (elastic) of the Elastic Stack.
+
+After that, open and modify the file /etc/elasticsearch/elasticsearch.yml, uncommenting the lines "**cluster.name:, network.host: and http.port:**" acording to the values of your environment.
+
+       ```bash
+       vi /etc/elasticsearch/elasticsearch.yml
+       ```
+
+After that, start the elasticsearch and check its status with the following commands:
+
+       ```bash
+       systemctl daemon-reload
+
+       systemctl enable elasticsearch.service
+
+       systemctl start elasticsearch.service
+
+       systemctl status elasticsearch.service
+       ```
+
+   - **5.5: Setting up Kibana on Ubuntu Server 24.04 LTS**
+
+     - After logging into the server, update the package manager:
+       ```bash
+       sudo apt update && sudo apt upgrade -y && sudo reboot
+       ```
+     - Install Kibana and all other components, going <a href="https://www.elastic.co/downloads/kibana">here</a> and choosing the "**DEB x86_64**" platform and wright click on that and choose the option "**copy link address**" and run the following command:
+       ```bash
+       wget https://artifacts.elastic.co/downloads/kibana/kibana-8.15.3-amd64.deb
+       
+       dpkg -i kibana-8.15.3-amd64.deb
+       ```
+
+After that, open and modify the file /etc/kibana/kibana.yml, uncommenting the lines "**server.port: and server.host::**" acording to the values of your environment.
+
+       ```bash
+       vi /etc/kibana/kibana.yml
+       ```
+
+After that, start the kibana service and check its status with the following commands:
+
+       ```bash
+       systemctl daemon-reload
+
+       systemctl enable kibana.service
+
+       systemctl start kibana.service
+
+       systemctl status kibana.service
+       ```
+
+After all that, let us generate the enrollment token for kibana in the elasticsearch, running the following command:
+
+       ```bash
+       /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
+       ```
+
+Copy the output to paste it when logging in on the web gui of the elastic. Go to your browser and type "**http://YOUR_KIBANA_IP:5601**", paste the output copied in the step before. You will be asked a verification code, just run the following command in the kibana machine:
+
+       ```bash
+       /usr/share/kibana/bin/kibana-verification-code
+       ```
+
+After all has runned well, it's time to generate the encryption keys for the API integration, run the following command:
+
+       ```bash
+       /usr/share/kibana/bin/kibana-encryption-keys generate
+       ```
+
+Copy and save the output generated, then run the following commands:
+
+       ```bash
+       /usr/share/kibana/bin/kibana-keystore add xpack.encryptedSavedObjects.encryptionKey
+       ```
+
+And paste the output on front of "**xpack.encryptedSavedObjects.encryptionKey**"
+
+       ```bash
+       /usr/share/kibana/bin/kibana-keystore add xpack.reporting.encryptionKey
+       ```
+
+And paste the output on front of "**xpack.reporting.encryptionKey**"
+
+       ```bash
+       /usr/share/kibana/bin/kibana-keystore add xpack.security.encryptionKey
+       ```
+
+And paste the output on front of "**xpack.security.encryptionKey**"
+
+Restart kibana
+
+       ```bash
+       systemctl restart kibana.service
+       ```
+
+If you desire, you can change the elastic superuser password with the command bellow
+
+       ```bash
+       /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic -i
+       ```
+
+   - **5.6: Setting up Fleet Server on Ubuntu Server 24.04 LTS**
 
      - After logging into the server, update the package manager:
        ```bash
