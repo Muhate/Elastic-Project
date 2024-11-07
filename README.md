@@ -206,6 +206,8 @@ Continuing, click the ""**close**"" button and add agent following the image bel
 <img width="944" alt="Add Agent" src="https://github.com/user-attachments/assets/0f880b3e-d075-4a64-9c1f-6401e55aa467">
 </p>
 
+- **5.7: Setting up Fleet Agent on Windows Server 2022**
+
 Another screen will be opened, fill the policy name, in this case we create the windows policy. This is a good practice, as for each OS we are going to have a diferrent policy.
 
 <p align="center">
@@ -218,8 +220,49 @@ As we are installing the agent in a Windows OS, we choose Windows ""**Install El
 <img width="944" alt="Command to run on Windows machine" src="https://github.com/user-attachments/assets/cd2f38a5-72e8-4ce6-b04b-6970dc8d2e70">
 </p>
 
+- **5.8: Setting up Sysmon on Windows Server 2022**
+
+  https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml - Sysmon download
+
+Another screen will be opened, fill the policy name, in this case we create the windows policy. This is a good practice, as for each OS we are going to have a diferrent policy.
+
+<p align="center">
+<img width="944" alt="Windows Policy creation" src="https://github.com/user-attachments/assets/f509c73b-6090-4f95-b812-8a657e58d775">
+</p>
+
+As we are installing the agent in a Windows OS, we choose Windows ""**Install Elastic Agent on you host**"" and copy the command to run on the Windows machine. Make sure to add the flag ""**--insecure**"" before running the command. Run the command as Administrator in the PowerShell.
+
+<p align="center">
+<img width="944" alt="Command to run on Windows machine" src="https://github.com/user-attachments/assets/cd2f38a5-72e8-4ce6-b04b-6970dc8d2e70">
+</p>
+
+- **5.8: Setting up Fleet Agent on Ubuntu Server 24.04**
+
+Another screen will be opened, fill the policy name, in this case we create the windows policy. This is a good practice, as for each OS we are going to have a diferrent policy.
+
+Add agent on ubuntu
+
+<img width="946" alt="image" src="https://github.com/user-attachments/assets/1a8592eb-5e52-4819-81e3-9ff235c3be6c">
 
 
+
+<p align="center">
+<img width="944" alt="Windows Policy creation" src="https://github.com/user-attachments/assets/f509c73b-6090-4f95-b812-8a657e58d775">
+</p>
+
+Create new policy for Linux (Ubuntu)
+<img width="944" alt="image" src="https://github.com/user-attachments/assets/61265e17-7255-4d05-8dca-f3127bca66f7">
+
+
+Create policy
+<img width="943" alt="image" src="https://github.com/user-attachments/assets/be3130be-30d8-4c90-85cb-6014309810fc">
+
+
+As we are installing the agent in a Windows OS, we choose Windows ""**Install Elastic Agent on you host**"" and copy the command to run on the Windows machine. Make sure to add the flag ""**--insecure**"" before running the command. Run the command as Administrator in the PowerShell.
+
+<p align="center">
+<img width="944" alt="Command to run on Windows machine" src="https://github.com/user-attachments/assets/cd2f38a5-72e8-4ce6-b04b-6970dc8d2e70">
+</p>
 
 
 
