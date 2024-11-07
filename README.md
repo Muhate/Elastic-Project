@@ -228,18 +228,6 @@ To setup sysmon on Windows, we need first to download, extract and install the s
        .\Sysmon64.exe -i sysmonconfig.xml --accepteula
        ```
 
-Another screen will be opened, fill the policy name, in this case we create the windows policy. This is a good practice, as for each OS we are going to have a diferrent policy.
-
-<p align="center">
-<img width="944" alt="Windows Policy creation" src="https://github.com/user-attachments/assets/f509c73b-6090-4f95-b812-8a657e58d775">
-</p>
-
-As we are installing the agent in a Windows OS, we choose Windows ""**Install Elastic Agent on you host**"" and copy the command to run on the Windows machine. Make sure to add the flag ""**--insecure**"" before running the command. Run the command as Administrator in the PowerShell.
-
-<p align="center">
-<img width="944" alt="Command to run on Windows machine" src="https://github.com/user-attachments/assets/cd2f38a5-72e8-4ce6-b04b-6970dc8d2e70">
-</p>
-
 - **5.8: Setting up Fleet Agent on Ubuntu Server 24.04**
 
 Another screen will be opened, fill the policy name, in this case we create the windows policy. This is a good practice, as for each OS we are going to have a diferrent policy.
