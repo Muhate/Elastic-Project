@@ -175,50 +175,29 @@ If you desire, you can change the elastic superuser password with the command be
        ```bash
        sudo apt update && sudo apt upgrade -y && sudo reboot
        ```
-     - Install Suricata - It's important to use the OISF Personal Package Archives (PPA) because OISF maintains a PPA **suricata-stable** that always contains the latest stable release of Suricata:
-       ```bash
-       sudo apt install software-properties-common
-       sudo add-apt-repository ppa:oisf/suricata-stable
-       sudo apt update && sudo apt upgrade -y
-       sudo apt install suricata jq -y
-       ```
 
-     - Enable and start Suricata:
-       ```bash
-       sudo systemctl enable suricata.service
-       sudo systemctl start suricata.service
-       ```
+After upgrading and rebooting the system, go to your kibana web GUI and follow the steps indicated in the image below.
 
-     - Create **rules** directory, download the Suricata rules to that directory and extract them:
-       ```bash
-       cd /tmp/ && curl -LO https://rules.emergingthreats.net/open/suricata-7.0.3/emerging.rules.tar.gz
-       sudo tar -xvzf emerging.rules.tar.gz && sudo mkdir /etc/suricata/rules && sudo mv rules/*.rules /etc/suricata/rules/
-       sudo chmod 640 /etc/suricata/rules/*.rules
-       ```
+<p align="center">
+<img width="955" alt="Fleet Server installation" src="https://github.com/user-attachments/assets/7e52549e-711b-485b-820f-9e9cf50981f7">
+</p>
 
-     - Edit the Suricata settings in the **/etc/suricata/suricata.yaml** file and set the following variables accordingly:
-       ```bash
-       HOME_NET: "<YOUR_MACHINE_IP>"
-       EXTERNAL_NET: "any"
+After clicking the "**Add Fleet Server**" button, fill the form presented in the right side, as the image below shows. The IP to be filled is the fleet server one.
 
-       default-rule-path: /etc/suricata/rules
-       rule-files:
-       - "*.rules"
+<p align="center">
+<img width="944" alt="Fleet Server installation - fill the details of the fleet server" src="https://github.com/user-attachments/assets/0f3b494a-c51f-424d-a5f7-6301c4ce6816">
+</p>
 
-       # Global stats configuration
-       stats:
-       enabled: yes
+After generating the fleet server policy, copy the command presented in the next screen, as showed in the image below.
 
-       # Linux high speed capture support
-       af-packet:
-       - interface: enp0s3
-       ```
+<p align="center">
+<img width="944" alt="Command to copy for fleet server installation" src="https://github.com/user-attachments/assets/93185a02-8ce3-4c13-abab-64b5c6673791">
+</p>
 
-     - Restart and check the status of Suricata service:
-       ```bash
-       sudo systemctl restart suricata.service
-       sudo systemctl status suricata.service
-       ```
+
+
+
+
 
    - **5.6: Add the following code inside the file */var/ossec/etc/ossec.conf* on Wazuh agent**
 
