@@ -260,7 +260,13 @@ To ingest logs to Elastic Stack we will need to add some integrastions to our ag
 
 
 <p align="center">
-<img width="944" alt="Add integration" src="https://github.com/user-attachments/assets/453a1cdb-80c7-478b-8028-3e6325e1a85f>
+<img width="944" alt="Add integration" src="https://github.com/user-attachments/assets/d8e0d5c4-c3e8-4c9b-9dcc-cce141c81554">
+</p>
+
+We search for the term "**Windows**" and we can choose between "**Custom Windows Event Logs**" and "**windows**". In this project we are going to choose the first, as shown in the image below:
+
+<p align="center">
+<img width="944" alt="Custom Windows Event Logs integration" src="https://github.com/user-attachments/assets/57ebd370-582e-41b1-aaad-258079dbfec2">
 </p>
 
 
