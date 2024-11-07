@@ -232,16 +232,21 @@ To setup sysmon on Windows, we need first to download, extract and install the s
 
 To add the agent on Ubuntu Server we follow the same steps taken to add it on Windows Server, but we will create another policy for Linux servers. So click the "**Add agent**" button, as shown in the image below.
 
-<img width="946" alt="image" src="https://github.com/user-attachments/assets/1a8592eb-5e52-4819-81e3-9ff235c3be6c">
+<p align="center">
+<img width="944" alt="Agent addition" src="https://github.com/user-attachments/assets/1a8592eb-5e52-4819-81e3-9ff235c3be6c">
+</p>
 
 Then create new policy, by clicking the "**Create new agent policy**" button
 
-<img width="944" alt="image" src="https://github.com/user-attachments/assets/61265e17-7255-4d05-8dca-f3127bca66f7">
+<p align="center">
+<img width="944" alt="Create new agent policy" src="https://github.com/user-attachments/assets/61265e17-7255-4d05-8dca-f3127bca66f7">
+</p>
 
 You will be prompted with a screen to fill the name of the new policy, just give a name for that and click "**Create policy**" button, as shown below
 
-<img width="943" alt="image" src="https://github.com/user-attachments/assets/be3130be-30d8-4c90-85cb-6014309810fc">
-
+<p align="center">
+<img width="944" alt="Policy creation" src="https://github.com/user-attachments/assets/be3130be-30d8-4c90-85cb-6014309810fc">
+</p>
 
 As we are installing the agent in a Linux (Ubuntu) OS, we choose "**Linux Tar**" inside "**Install Elastic Agent on you host**" and copy the command to run on the Linux machine. Make sure to add the flag ""**--insecure**"" before running the command. Run the command as root user in the command line.
 
@@ -249,11 +254,19 @@ As we are installing the agent in a Linux (Ubuntu) OS, we choose "**Linux Tar**"
 <img width="944" alt="Command to run on Linux machine" src="https://github.com/user-attachments/assets/1f95e16a-37c0-4d77-8031-8dcf8441acc5">
 </p>
 
+- **6: Ingest logs to Elastic Stack**
+
+To ingest logs to Elastic Stack we will need to add some integrastions to our agents. We are going to start with the agents installed on the Windows machine. We'll be adding the integrations through the policies, so that the integrations are added to all the agents enrolled on that policy. Follow the steps in the image below to add integrations.
+
+
+<p align="center">
+<img width="944" alt="Add integration" src="https://github.com/user-attachments/assets/453a1cdb-80c7-478b-8028-3e6325e1a85f>
+</p>
 
 
 
 
-### 6. **Conclusion**
+### 7. **Conclusion**
    - This project successfully demonstrated:
    - The Suricata installation on Ubuntu Server 24.04 LTS and its configuration to detect anomalies on the server traffic;
    - The Wazuh installation on Ubuntu Server 24.04 LTS;
