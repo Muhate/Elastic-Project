@@ -243,10 +243,10 @@ You will be prompted with a screen to fill the name of the new policy, just give
 <img width="943" alt="image" src="https://github.com/user-attachments/assets/be3130be-30d8-4c90-85cb-6014309810fc">
 
 
-As we are installing the agent in a Windows OS, we choose Windows ""**Install Elastic Agent on you host**"" and copy the command to run on the Windows machine. Make sure to add the flag ""**--insecure**"" before running the command. Run the command as Administrator in the PowerShell.
+As we are installing the agent in a Linux (Ubuntu) OS, we choose "**Linux Tar**" inside "**Install Elastic Agent on you host**" and copy the command to run on the Linux machine. Make sure to add the flag ""**--insecure**"" before running the command. Run the command as root user in the command line.
 
 <p align="center">
-<img width="944" alt="Command to run on Windows machine" src="https://github.com/user-attachments/assets/cd2f38a5-72e8-4ce6-b04b-6970dc8d2e70">
+<img width="944" alt="Command to run on Linux machine" src="https://github.com/user-attachments/assets/1f95e16a-37c0-4d77-8031-8dcf8441acc5">
 </p>
 
 
