@@ -275,6 +275,17 @@ After choosing the integration to add, we click on that and then click on the "*
 <img width="944" alt="Add Custom Windows Events Logs" src="https://github.com/user-attachments/assets/a7ad479b-3c22-48c5-a0d8-41997da8f312">
 </p>
 
+Another screen will be opened, fill the name, the description, the channel name and choose "**Existing host**" and then the "**Windows policy**" created, follow the image below. At the end click "**Save and continue**".Some scree will pop-up, click "**save and deploy changes**".
+
+<p align="center">
+<img width="944" alt="Integration details" src="https://github.com/user-attachments/assets/70003028-8a0d-4879-8d94-422f64f37dd8">
+</p>
+
+We may want to add another logs, we do that by clicking the button "**Add custom Windows Event Logs**" button in the top right conner, and choose the source of the logs. For this example we are going to choose the Windows Defender logs, as shown in the image below, fill the name, the description, the channel name and choose "**Existing host**" and then the "**Windows policy**" created, follow the image below. At the end click "**Save and continue**".Some scree will pop-up, click "**save and deploy changes**".
+
+<p align="center">
+<img width="944" alt="Add another log source" src="https://github.com/user-attachments/assets/08490734-0822-4b25-9c10-c3e055d1e016">
+</p>
 
 
 
