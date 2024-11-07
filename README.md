@@ -188,11 +188,39 @@ After clicking the "**Add Fleet Server**" button, fill the form presented in the
 <img width="944" alt="Fleet Server installation - fill the details of the fleet server" src="https://github.com/user-attachments/assets/0f3b494a-c51f-424d-a5f7-6301c4ce6816">
 </p>
 
-After generating the fleet server policy, copy the command presented in the next screen, as showed in the image below.
+After generating the fleet server policy, copy the command presented in the next screen, as showed in the image below. Make sure to add the flag "**--insecure**" before running the command omn the fleet server.
 
 <p align="center">
 <img width="944" alt="Command to copy for fleet server installation" src="https://github.com/user-attachments/assets/93185a02-8ce3-4c13-abab-64b5c6673791">
 </p>
+
+If everything runs well, the button ""**Continue enrolling Elastic Agent**"" will become clickable, click on that and continue.
+
+<p align="center">
+<img width="944" alt="Continue enrolling Elastic Agent" src="https://github.com/user-attachments/assets/a3a2cc80-bb6e-48d2-a54a-88b079e8bf18">
+</p>
+
+Continuing, click the ""**close**"" button and add agent following the image below:
+
+<p align="center">
+<img width="944" alt="Add Agent" src="https://github.com/user-attachments/assets/0f880b3e-d075-4a64-9c1f-6401e55aa467">
+</p>
+
+Another screen will be opened, fill the policy name, in this case we create the windows policy. This is a good practice, as for each OS we are going to have a diferrent policy.
+
+<p align="center">
+<img width="944" alt="Windows Policy creation" src="https://github.com/user-attachments/assets/f509c73b-6090-4f95-b812-8a657e58d775">
+</p>
+
+As we are installing the agent in a Windows OS, we choose Windows ""**Install Elastic Agent on you host**"" and copy the command to run on the Windows machine. Make sure to add the flag ""**--insecure**"" before running the command. Run the command as Administrator in the PowerShell.
+
+<p align="center">
+<img width="944" alt="Command to run on Windows machine" src="https://github.com/user-attachments/assets/cd2f38a5-72e8-4ce6-b04b-6970dc8d2e70">
+</p>
+
+
+
+
 
 
 
